@@ -1,0 +1,5 @@
+﻿id,full_name,personal_number,position,nfc_uid,is_active
+EMP-001,Иванов Иван Иванович,TAB-001,Инженер,NFC-0201,true
+EMP-002,Петров Петр Петрович,TAB-002,Техник,NFC-0202,false
+EMP-003,Сидоров Алексей Андреевич,TAB-003,Мастер,NFC-0203,true
+EMP-004,Иванов Александр Олегович,TAB-004,Электрик,NFC-0204,false

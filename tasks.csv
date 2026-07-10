@@ -1,0 +1,5 @@
+﻿id,title,description,work_type_id,employee_id,location_id,device_id,planned_date,status,priority,is_active
+TASK-001,Осмотр огнетушителя,Плановый осмотр огнетушителя на складе,WORK-001,EMP-001,LOC-001,DEV-001,7/10/2026,done,high,true
+TASK-002,Ремонт пожарного щита,Проверка и ремонт креплений пожарного щита,WORK-002,EMP-002,LOC-002,DEV-002,7/11/2026,in_progress,medium,true
+TASK-003,Замена рукава,Замена противопожарного рукава в серверной,WORK-003,EMP-003,LOC-003,DEV-003,7/12/2026,planned,high,true
+TASK-004,Проверка ящика с песком,Проверить состояние и заполненность ящика с песком,WORK-004,EMP-004,LOC-004,DEV-003,7/13/2026,planned,low,true

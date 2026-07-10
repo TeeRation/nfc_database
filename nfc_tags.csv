@@ -1,5 +1,5 @@
 ﻿id,nfc_uid,entity_type,entity_id,is_active
 TAG-001,NFC-0001,location,LOC-001,true
 TAG-002,NFC-0002,device,DEV-001,true
-TAG-003,NFC-0003,employee,EMP-001,true
-TAG-004,NFC-0004,work_type,WORK-001,true
+TAG-003,NFC-0003,location,LOC-002,false
+TAG-004,NFC-0004,device,DEV-002,true

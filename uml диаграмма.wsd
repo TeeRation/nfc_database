@@ -11,7 +11,7 @@ skinparam ranksep 55
 class NfcTag {
     id: uuid <<PK>>
     --
-    nfc_uid: varchar
+    nfc_uid: uuid
     entity_type: varchar
     entity_id: UUID
     is_active: BOOLEAN
@@ -23,7 +23,7 @@ class WorkType {
     name: varchar
     code: varchar
     description: text
-    nfc_uid: varchar
+    nfc_uid: uuid
     is_active: boolean
 }
 
@@ -33,14 +33,14 @@ class Employee {
     full_name: varchar
     personal_number: varchar
     position: varchar
-    nfc_uid: varchar
+    nfc_uid: uuid
     is_active: boolean
 }
 
 class Task {
     id: uuid <<PK>>
     --
-    title
+    title: varchar
     description: text
     work_type_id: uuid<<FK>>
     employee_id: uuid <<FK>>
@@ -58,7 +58,7 @@ class Device {
     name: varchar
     inventory_number: varchar
     location_id: uuid <<FK>>
-    nfc_uid: varchar
+    nfc_uid: uuid
     is_active: boolean
 }
 
@@ -67,7 +67,7 @@ class Location {
     --
     name: varchar
     description: varchar
-    nfc_uid: varchar
+    nfc_uid: uuid
     is_active: boolean
 }
 

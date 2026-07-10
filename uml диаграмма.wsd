@@ -9,66 +9,66 @@ skinparam nodesep 55
 skinparam ranksep 55
 
 class NfcTag {
-    id <<PK>>
+    id: uuid <<PK>>
     --
-    nfc_uid
-    entity_type
-    entity_id
-    is_active
+    nfc_uid: varchar
+    entity_type: varchar
+    entity_id: UUID
+    is_active: BOOLEAN
 }
 
 class WorkType {
-    id <<PK>>
+    id: uuid <<PK>>
     --
-    name
-    code
-    description
-    nfc_uid
-    is_active
+    name: varchar
+    code: varchar
+    description: text
+    nfc_uid: varchar
+    is_active: boolean
 }
 
 class Employee {
-    id <<PK>>
+    id: uuid <<PK>>
     --
-    full_name
-    personal_number
-    position
-    nfc_uid
-    is_active
+    full_name: varchar
+    personal_number: varchar
+    position: varchar
+    nfc_uid: varchar
+    is_active: boolean
 }
 
 class Task {
-    id <<PK>>
+    id: uuid <<PK>>
     --
     title
-    description
-    work_type_id <<FK>>
-    employee_id <<FK>>
-    location_id <<FK>>
-    device_id <<FK>>
-    planned_date
-    status
-    priority
-    is_active
+    description: text
+    work_type_id: uuid<<FK>>
+    employee_id: uuid <<FK>>
+    location_id: uuid <<FK>>
+    device_id: uuid <<FK>>
+    planned_date: date
+    status: varchar 
+    priority: varchar
+    is_active: boolean
 }
 
 class Device {
-    id <<PK>>
+    id: uuid <<PK>>
     --
-    name
-    inventory_number
-    location_id <<FK>>
-    nfc_uid
-    is_active
+    name: varchar
+    inventory_number: varchar
+    location_id: uuid <<FK>>
+    nfc_uid: varchar
+    is_active: boolean
 }
 
 class Location {
-    id <<PK>>
+    id: uuid <<PK>>
     --
-    name
-    description
-    nfc_uid
-    is_active
+    name: varchar
+    description: varchar
+    nfc_uid: varchar
+    is_active: boolean
 }
 
 

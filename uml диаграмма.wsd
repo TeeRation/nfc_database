@@ -71,25 +71,6 @@ class Location {
     is_active
 }
 
-enum TaskStatus {
-    planned
-    in_progress
-    done
-    cancelled
-}
-
-enum TaskPriority {
-    low
-    medium
-    high
-}
-
-enum EntityType {
-    location
-    device
-    employee
-    work_type
-}
 
 Task -left-> WorkType
 Task -right-> Employee
@@ -124,9 +105,5 @@ NfcTag -[hidden]down-> Task
 WorkType -[hidden]down-> Device
 Employee -[hidden]down-> Location
 
-TaskStatus -[hidden]right-> TaskPriority
-TaskPriority -[hidden]down-> EntityType
-
-Employee -[hidden]right-> TaskStatus
 
 @enduml

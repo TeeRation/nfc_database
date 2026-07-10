@@ -101,12 +101,11 @@ Device -right-> Location
 note right of NfcTag
   Полиморфная связь:
 
-  entity_type определяет тип сущности,
+  entity_type — определяет тип сущности,
   entity_id — идентификатор записи.
 
   Возможные сущности:
   • WorkType
-  • Employee
   • Device
   • Location
 end note

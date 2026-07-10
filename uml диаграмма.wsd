@@ -96,8 +96,6 @@ Task -right-> Employee
 Task -down-> Device
 Task -down-> Location
 
-NfcTag ..> WorkType
-NfcTag ..> Employee
 NfcTag ..> Device
 NfcTag ..> Location
 

@@ -1,0 +1,128 @@
+@startuml
+title UML-диаграмма структуры базы данных NFC
+
+top to bottom direction
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam nodesep 55
+skinparam ranksep 55
+
+class NfcTag {
+    id <<PK>>
+    --
+    nfc_uid
+    entity_type
+    entity_id
+    is_active
+}
+
+class WorkType {
+    id <<PK>>
+    --
+    name
+    code
+    description
+    nfc_uid
+    is_active
+}
+
+class Employee {
+    id <<PK>>
+    --
+    full_name
+    personal_number
+    position
+    nfc_uid
+    is_active
+}
+
+class Task {
+    id <<PK>>
+    --
+    title
+    description
+    work_type_id <<FK>>
+    employee_id <<FK>>
+    location_id <<FK>>
+    device_id <<FK>>
+    planned_date
+    status
+    priority
+    is_active
+}
+
+class Device {
+    id <<PK>>
+    --
+    name
+    inventory_number
+    location_id <<FK>>
+    nfc_uid
+    is_active
+}
+
+class Location {
+    id <<PK>>
+    --
+    name
+    description
+    nfc_uid
+    is_active
+}
+
+enum TaskStatus {
+    planned
+    in_progress
+    done
+    cancelled
+}
+
+enum TaskPriority {
+    low
+    medium
+    high
+}
+
+enum EntityType {
+    location
+    device
+    employee
+    work_type
+}
+
+Task -left-> WorkType
+Task -right-> Employee
+Task -down-> Device
+Task -down-> Location
+
+Device -right-> Location
+
+note right of NfcTag
+  Полиморфная связь:
+
+  entity_type определяет тип сущности,
+  entity_id — идентификатор записи.
+
+  Возможные сущности:
+  • WorkType
+  • Employee
+  • Device
+  • Location
+end note
+
+WorkType -[hidden]right-> Task
+Task -[hidden]right-> Employee
+
+Device -[hidden]right-> Location
+
+NfcTag -[hidden]down-> Task
+WorkType -[hidden]down-> Device
+Employee -[hidden]down-> Location
+
+TaskStatus -[hidden]right-> TaskPriority
+TaskPriority -[hidden]down-> EntityType
+
+Employee -[hidden]right-> TaskStatus
+
+@enduml

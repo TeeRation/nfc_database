@@ -66,7 +66,7 @@ class Location {
     id: uuid <<PK>>
     --
     name: varchar
-    description: varchar
+    description: text
     nfc_uid: uuid
     is_active: boolean
 }

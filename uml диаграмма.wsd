@@ -99,15 +99,14 @@ Task -down-> Location
 Device -right-> Location
 
 note right of NfcTag
-  Полиморфная связь:
+  Полиморфная связь NFC-метки.
 
-  entity_type — определяет тип сущности,
-  entity_id — идентификатор записи.
+  Поле entity_type указывает,
+  к какому объекту системы привязана метка
+  (сотрудник, оборудование, локация или тип работы).
 
-  Возможные сущности:
-  • WorkType
-  • Device
-  • Location
+  Поле entity_id хранит идентификатор
+  соответствующей записи в выбранной таблице.
 end note
 
 WorkType -[hidden]right-> Task

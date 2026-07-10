@@ -107,6 +107,9 @@ note right of NfcTag
 
   Поле entity_id хранит идентификатор
   соответствующей записи в выбранной таблице.
+
+  PK - Primary Key. Первичный ключ (id).
+  FK - Foreign Key. Вторичный ключ. Поле-ссылка на запись из другой таблицы.
 end note
 
 WorkType -[hidden]right-> Task

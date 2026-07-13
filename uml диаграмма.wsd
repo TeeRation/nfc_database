@@ -11,8 +11,9 @@ skinparam ranksep 55
 class NfcTag {
     id: uuid <<PK>>
     --
-    nfc_tag_id: uuid <<FK>>
     manufacturer_id: uuid <<FK>>
+    entity_type: varchar
+    entity_id: UUID
     is_active: BOOLEAN
 }
 
@@ -83,7 +84,7 @@ NfcTag -left-> NfcManufacturer
 
 NfcTag ..> Device
 NfcTag ..> Location
-
+NfcTag ..> WorkType
 
 Device -right-> Location
 

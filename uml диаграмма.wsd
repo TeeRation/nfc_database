@@ -71,6 +71,8 @@ class NfcManufacturer {
     id: uuid <<PK>>
     --
     name: varchar
+    nfc_tag_id: uuid
+    is_active: boolean
 }
 
 Task -left-> WorkType

@@ -1,5 +1,5 @@
-﻿id,name,code,description,nfc_tag_id,is_active
-WORK-001,Осмотр,INSPECTION,Плановый осмотр,TAG-009,true
-WORK-002,Ремонт,REPAIR,Устранение неисправности,TAG-010,false
-WORK-003,Замена,REPLACE,Замена детали или устройства,TAG-011,true
-WORK-004,Перекатка,REWINDING,Перемотка пожарных рукавов,TAG-012,false
+﻿id,name,code,description,is_active
+WORK-001,Осмотр,INSPECTION,Плановый осмотр,true
+WORK-002,Ремонт,REPAIR,Устранение неисправности,false
+WORK-003,Замена,REPLACE,Замена детали или устройства,true
+WORK-004,Перекатка,REWINDING,Перемотка пожарных рукавов,false

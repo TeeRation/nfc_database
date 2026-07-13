@@ -11,7 +11,7 @@ skinparam ranksep 55
 class NfcTag {
     id: uuid <<PK>>
     --
-    nfc_uid: uuid
+    nfc_tag_id: uuid <<FK>>
     manufacturer_id: uuid <<FK>>
     is_active: BOOLEAN
 }
@@ -32,7 +32,6 @@ class Employee {
     full_name: varchar
     personal_number: varchar
     position: varchar
-    nfc_tag_id: uuid <<FK>>
     is_active: boolean
 }
 
@@ -89,6 +88,15 @@ NfcTag ..> Location
 Device -right-> Location
 
 note right of NfcTag
+  Полиморфная связь NFC-метки.
+
+  Поле entity_type указывает,
+  к какому объекту системы привязана метка
+  (сотрудник, оборудование, локация или тип работы).
+
+  Поле entity_id хранит идентификатор
+  соответствующей записи в выбранной таблице.
+
   PK - Primary Key. Первичный ключ (id).
   FK - Foreign Key. Вторичный ключ. Поле-ссылка на запись из другой таблицы.
 end note

@@ -23,7 +23,6 @@ class WorkType {
     name: varchar
     code: varchar
     description: text
-    nfc_tag_id: uuid <<FK>>
     is_active: boolean
 }
 
@@ -57,7 +56,6 @@ class Device {
     name: varchar
     inventory_number: varchar
     location_id: uuid <<FK>>
-    nfc_tag_id: uuid <<FK>>
     is_active: boolean
 }
 
@@ -66,7 +64,6 @@ class Location {
     --
     name: varchar
     description: text
-    nfc_tag_id: uuid <<FK>>
     is_active: boolean
 }
 

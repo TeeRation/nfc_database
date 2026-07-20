@@ -8,6 +8,6 @@ CREATE TABLE IF NOT EXISTS work_type (
     description TEXT,
 
     is_active INTEGER NOT NULL DEFAULT 1
-        CHECK (is_active IN (0, 1)),
+        CHECK (is_active IN (0, 1))
 
 );

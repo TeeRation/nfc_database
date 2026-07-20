@@ -7,8 +7,6 @@ CREATE TABLE IF NOT EXISTS work_type (
     code TEXT NOT NULL UNIQUE,
     description TEXT,
 
-    nfc_tag_id TEXT,
-
     is_active INTEGER NOT NULL DEFAULT 1
         CHECK (is_active IN (0, 1)),
 

@@ -5,7 +5,6 @@ INSERT INTO work_type (
     name,
     code,
     description,
-    nfc_tag_id,
     is_active
 )
 VALUES
@@ -14,7 +13,6 @@ VALUES
     'Проверка пожарного шкафа',
     'FIRE_CHECK',
     'Плановая проверка состояния пожарного шкафа',
-    'TAG-006',
     1
 ),
 (
@@ -22,7 +20,6 @@ VALUES
     'Осмотр помещения',
     'ROOM_CHECK',
     'Периодический осмотр помещения',
-    NULL,
     1
 ),
 (
@@ -30,6 +27,5 @@ VALUES
     'Инвентаризация оборудования',
     'DEVICE_INVENTORY',
     'Проверка наличия оборудования',
-    NULL,
     1
 );

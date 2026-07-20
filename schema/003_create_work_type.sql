@@ -12,6 +12,4 @@ CREATE TABLE IF NOT EXISTS work_type (
     is_active INTEGER NOT NULL DEFAULT 1
         CHECK (is_active IN (0, 1)),
 
-    FOREIGN KEY (nfc_tag_id)
-        REFERENCES nfc_tag(id)
 );

@@ -1,0 +1,52 @@
+PRAGMA foreign_keys = ON;
+
+INSERT INTO nfc_tag (
+    id,
+    entity_id,
+    entity_type,
+    manufacturer_id,
+    is_active
+)
+VALUES
+    (
+        'TAG-001',
+        'LOC-001',
+        'location',
+        'MAN-001',
+        1
+    ),
+    (
+        'TAG-002',
+        'LOC-001',
+        'location',
+        'MAN-001',
+        1
+    ),
+    (
+        'TAG-003',
+        'LOC-001',
+        'location',
+        'MAN-001',
+        1
+    ),
+    (
+        'TAG-004',
+        'EMP-001',
+        'employee',
+        'MAN-002',
+        1
+    ),
+    (
+        'TAG-005',
+        'DEV-001',
+        'device',
+        'MAN-001',
+        1
+    ),
+    (
+        'TAG-006',
+        'WORK-001',
+        'work_type',
+        'MAN-004',
+        1
+    );

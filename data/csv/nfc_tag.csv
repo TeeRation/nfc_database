@@ -1,9 +1,9 @@
 ﻿id,entity_id,entity_type,manufacturer_id,is_active
-TAG-001,LOC-001,location,none,true
+TAG-001,LOC-001,location,NULL,true
 TAG-002,DEV-001,device,MAN-001,true
-TAG-003,LOC-002,location,none,false
+TAG-003,LOC-002,location,NULL,false
 TAG-004,DEV-002,device,MAN-002,true
-TAG-005,LOC-003,location,none,true
+TAG-005,LOC-003,location,NULL,true
 TAG-006,DEV-003,device,MAN-003,true
-TAG-007,LOC-004,location,none,false
+TAG-007,LOC-004,location,NULL,false
 TAG-008,DEV-004,device,MAN-004,true

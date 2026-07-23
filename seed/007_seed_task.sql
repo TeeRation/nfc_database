@@ -9,10 +9,12 @@ INSERT INTO task (
     employee_id,
     location_id,
     device_id,
+    closed_by_employee_id,
 
     planned_date,
     status,
     priority,
+    closed_at,
 
     is_active
 )
@@ -26,14 +28,15 @@ VALUES
     'EMP-001',
     'LOC-001',
     'DEV-001',
+    NULL,
 
     '2026-07-21',
     'planned',
     'high',
+    NULL,
 
     1
 ),
-
 (
     'TASK-002',
     'Осмотр серверной',
@@ -43,14 +46,15 @@ VALUES
     'EMP-002',
     'LOC-002',
     NULL,
+    NULL,
 
     '2026-07-22',
     'in_progress',
     'medium',
+    NULL,
 
     1
 ),
-
 (
     'TASK-003',
     'Инвентаризация ноутбука',
@@ -60,10 +64,12 @@ VALUES
     'EMP-003',
     'LOC-003',
     'DEV-003',
+    NULL,
 
     '2026-07-25',
     'planned',
     'low',
+    NULL,
 
     1
 );

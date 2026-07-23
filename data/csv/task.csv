@@ -1,5 +1,5 @@
-﻿id,title,description,work_type_id,employee_id,location_id,device_id,planned_date,status,priority,is_active
-TASK-001,Осмотр огнетушителя,Плановый осмотр огнетушителя на складе №1,WORK-001,EMP-001,LOC-001,DEV-001,7/10/2026,done,high,true
-TASK-002,Ремонт пожарного щита,Проверка и ремонт креплений пожарного щита в кабинете 416,WORK-002,EMP-002,LOC-002,DEV-002,7/11/2026,in_progress,medium,true
-TASK-003,Замена рукава,Замена противопожарного рукава в серверной,WORK-003,EMP-003,LOC-003,DEV-003,7/12/2026,planned,high,true
-TASK-004,Осмотр ящика с песком,Плановый осмотр ящика с песком в коридоре 4,WORK-001,EMP-004,LOC-004,DEV-004,7/13/2026,planned,low,true
+﻿id,title,description,work_type_id,employee_id,location_id,device_id,closed_by_employee_id,planned_date,status,priority,closed_at,is_active
+TASK-001,Осмотр огнетушителя,Плановый осмотр огнетушителя на складе №1,WORK-001,EMP-001,LOC-001,DEV-001,EMP-001,7/10/2026,done,high,7/10/2026 16:42,1
+TASK-002,Ремонт пожарного щита,Проверка и ремонт креплений пожарного щита в кабинете 416,WORK-002,EMP-002,LOC-002,DEV-002,,7/11/2026,in_progress,medium,,1
+TASK-003,Замена рукава,Замена противопожарного рукава в серверной,WORK-003,EMP-003,LOC-003,DEV-003,,7/12/2026,planned,high,,1
+TASK-004,Осмотр ящика с песком,Плановый осмотр ящика с песком в коридоре 4,WORK-001,EMP-004,LOC-004,DEV-004,,7/13/2026,planned,low,,1

@@ -44,9 +44,11 @@ class Task {
     employee_id: uuid <<FK>>
     location_id: uuid <<FK>>
     device_id: uuid <<FK>>
+    closed_by_employee_id: uuid <<FK>>
     planned_date: date
     status: varchar 
     priority: varchar
+    closed_at: timestamp
     is_active: boolean
 }
 
@@ -77,6 +79,7 @@ class NfcManufacturer {
 
 Task -left-> WorkType
 Task -right-> Employee
+Task ..right..> Employee
 Task -down-> Device
 Task -down-> Location
 NfcTag -left-> NfcManufacturer

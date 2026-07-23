@@ -11,10 +11,12 @@ CREATE TABLE IF NOT EXISTS task (
     employee_id TEXT,
     location_id TEXT,
     device_id TEXT,
+    closed_by_employee_id TEXT,
 
     planned_date TEXT,
     status TEXT NOT NULL,
     priority TEXT NOT NULL,
+    closed_at TEXT,
 
     is_active INTEGER NOT NULL DEFAULT 1
         CHECK (is_active IN (0, 1)),
@@ -46,6 +48,9 @@ CREATE TABLE IF NOT EXISTS task (
         REFERENCES location(id),
 
     FOREIGN KEY (device_id)
-        REFERENCES device(id)
+    REFERENCES device(id),
+
+FOREIGN KEY (closed_by_employee_id)
+    REFERENCES employee(id)
 
 );

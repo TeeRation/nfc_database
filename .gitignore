@@ -1,12 +1,22 @@
-# Локальные файлы SQLite
+# SQLite database
 *.db
 *.sqlite
 *.sqlite3
 
-# Служебные файлы операционной системы
+# OS files
 Thumbs.db
 .DS_Store
 
-# Временные файлы редакторов
+# Temporary files
 *.tmp
 *.log
+
+# Python virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# VS Code settings
+.vscode/

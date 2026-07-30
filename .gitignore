@@ -1,22 +1,42 @@
-# SQLite database
+# =========================
+# Python virtual environment
+# =========================
+venv/
+
+# =========================
+# Python cache
+# =========================
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# =========================
+# SQLite databases
+# =========================
 *.db
 *.sqlite
 *.sqlite3
 
-# OS files
-Thumbs.db
-.DS_Store
+# =========================
+# Environment variables
+# =========================
+.env
 
+# =========================
 # Temporary files
+# =========================
 *.tmp
 *.log
 
-# Python virtual environment
-venv/
-
-# Python cache
-__pycache__/
-*.py[cod]
-
-# VS Code settings
+# =========================
+# IDE
+# =========================
 .vscode/
+.idea/
+
+# =========================
+# OS files
+# =========================
+Thumbs.db
+.DS_Store

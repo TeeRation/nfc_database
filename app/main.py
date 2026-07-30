@@ -1,15 +1,12 @@
 from fastapi import FastAPI
 
-from app import models
-from app.database import Base, engine
-
-
-Base.metadata.create_all(bind=engine)
-
 
 app = FastAPI(
     title="NFC Database API",
-    description="API для работы с NFC-метками, сотрудниками, устройствами и задачами",
+    description=(
+        "API для работы с NFC-метками, сотрудниками, "
+        "устройствами и задачами"
+    ),
     version="1.0.0",
 )
 

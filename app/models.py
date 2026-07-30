@@ -30,8 +30,8 @@ class NfcTag(Base):
     __tablename__ = "nfc_tag"
 
     id = Column(Text, primary_key=True)
-    entity_id = Column(Text, nullable=False)
-    entity_type = Column(Text, nullable=False)
+    entity_id = Column(Text, nullable=True)
+    entity_type = Column(Text, nullable=True)
 
     manufacturer_id = Column(
         Text,
@@ -43,7 +43,10 @@ class NfcTag(Base):
 
     __table_args__ = (
         CheckConstraint(
-            "entity_type IN ('location', 'device', 'employee', 'work_type')",
+            "(entity_type IS NULL AND entity_id IS NULL) OR "
+            "(entity_type IN "
+            "('location', 'device', 'employee', 'work_type') "
+            "AND entity_id IS NOT NULL)",
             name="check_nfc_tag_entity_type",
         ),
         CheckConstraint(

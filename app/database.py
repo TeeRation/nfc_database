@@ -1,17 +1,25 @@
-from pathlib import Path
+import os
 
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATABASE_PATH = BASE_DIR / "database" / "nfc_database.db"
 
-DATABASE_URL = f"sqlite:///{DATABASE_PATH}"
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL is None:
+    raise RuntimeError(
+        "DATABASE_URL не найдена. Проверьте файл .env."
+    )
+
 
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False},
+    pool_pre_ping=True,
 )
+
 
 SessionLocal = sessionmaker(
     autocommit=False,
@@ -19,11 +27,13 @@ SessionLocal = sessionmaker(
     bind=engine,
 )
 
+
 Base = declarative_base()
 
 
 def get_db():
     db = SessionLocal()
+
     try:
         yield db
     finally:

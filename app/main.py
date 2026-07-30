@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from app.admin import setup_admin
 
 app = FastAPI(
     title="NFC Database API",
@@ -9,6 +10,8 @@ app = FastAPI(
     ),
     version="1.0.0",
 )
+
+setup_admin(app)
 
 
 @app.get("/")

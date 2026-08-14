@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+from datetime import datetime
 
 class LocationResolveRequest(BaseModel):
     tag_id: str
@@ -34,3 +35,20 @@ class TaskStartResponse(BaseModel):
     employee_id: str
     started_tasks_count: int
     tasks: list[StartedTaskData]
+
+
+class TaskCloseRequest(BaseModel):
+    employee_id: str
+
+
+class TaskCloseResponse(BaseModel):
+    id: str
+    title: str
+    status: str
+    closed_by_employee_id: str
+    closed_at: datetime
+
+class TaskStatusResponse(BaseModel):
+    task_id: str
+    status: str
+    is_active: int

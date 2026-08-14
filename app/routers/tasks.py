@@ -1,7 +1,8 @@
+from datetime import datetime
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from datetime import datetime
 
 from app.database import get_db
 from app.models import Employee, Location, Task
@@ -86,6 +87,7 @@ def start_tasks(
         ],
     )
 
+
 @router.post(
     "/{task_id}/close",
     response_model=TaskCloseResponse,
@@ -149,6 +151,7 @@ def close_task(
         closed_by_employee_id=task.closed_by_employee_id,
         closed_at=task.closed_at,
     )
+
 
 @router.get(
     "/{task_id}/status",

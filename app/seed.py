@@ -26,8 +26,8 @@ def seed_database() -> None:
 
         if existing_manufacturer is not None:
             print(
-        "Seed marker manufacturer-1 already exists. "
-        "Seeding skipped."
+                "Seed marker manufacturer-1 already exists. "
+                "Seeding skipped."
     )
             return
 

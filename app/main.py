@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 
 from app.admin import setup_admin
+from app.routers.locations import router as locations_router
+from app.routers.tasks import router as tasks_router
 
 app = FastAPI(
     title="NFC Database API",
@@ -12,6 +14,8 @@ app = FastAPI(
 )
 
 setup_admin(app)
+app.include_router(locations_router)
+app.include_router(tasks_router)
 
 
 @app.get("/")

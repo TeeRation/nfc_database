@@ -1,4 +1,4 @@
-@startuml
+@startuml name "uml диаграмма структуры базы данных NFC"
 title UML-диаграмма структуры базы данных NFC
 
 top to bottom direction

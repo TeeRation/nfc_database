@@ -1,69 +1,14 @@
 from app.models import Employee, Location, Task, WorkType
 
 
-def create_task_dependencies(db):
-    employee = Employee(
-        id="employee-test",
-        full_name="Тестовый сотрудник",
-        personal_number="TEST-001",
-        position="Техник",
-        nfc_tag_id=None,
-        is_active=1,
-    )
-
-    location = Location(
-        id="location-test",
-        name="Тестовая локация",
-        description=None,
-        nfc_tag_id=None,
-        is_active=1,
-    )
-
-    work_type = WorkType(
-        id="work-type-test",
-        name="Тестовая работа",
-        code="TEST-WORK",
-        description=None,
-        nfc_tag_id=None,
-        is_active=1,
-    )
-
-    db.add_all(
-        [
-            employee,
-            location,
-            work_type,
-        ]
-    )
-    db.commit()
 
 
-def test_start_tasks_success(client, db):
-    create_task_dependencies(db)
 
-    task = Task(
-        id="task-test-1",
-        title="Тестовая задача",
-        description=None,
-        work_type_id="work-type-test",
-        employee_id="employee-test",
-        location_id="location-test",
-        device_id=None,
-        planned_date=None,
-        status="planned",
-        priority="medium",
-        closed_by_employee_id=None,
-        closed_at=None,
-        is_active=1,
-    )
-
-    db.add(task)
-    db.commit()
-
+def test_start_tasks_success(client, planned_task):
     response = client.post(
         "/api/tasks/start",
         json={
-            "location_id": "location-test",
+            "location_id": "location-test-1",
             "employee_id": "employee-test",
         },
     )
@@ -77,32 +22,11 @@ def test_start_tasks_success(client, db):
     assert data["tasks"][0]["status"] == "in_progress"
 
 
-def test_start_tasks_second_time_returns_zero(client, db):
-    create_task_dependencies(db)
-
-    task = Task(
-        id="task-test-1",
-        title="Тестовая задача",
-        description=None,
-        work_type_id="work-type-test",
-        employee_id="employee-test",
-        location_id="location-test",
-        device_id=None,
-        planned_date=None,
-        status="planned",
-        priority="medium",
-        closed_by_employee_id=None,
-        closed_at=None,
-        is_active=1,
-    )
-
-    db.add(task)
-    db.commit()
-
+def test_start_tasks_second_time_returns_zero(client, planned_task):
     first_response = client.post(
         "/api/tasks/start",
         json={
-            "location_id": "location-test",
+            "location_id": "location-test-1",
             "employee_id": "employee-test",
         },
     )
@@ -112,7 +36,7 @@ def test_start_tasks_second_time_returns_zero(client, db):
     second_response = client.post(
         "/api/tasks/start",
         json={
-            "location_id": "location-test",
+            "location_id": "location-test-1",
             "employee_id": "employee-test",
         },
     )
@@ -121,28 +45,7 @@ def test_start_tasks_second_time_returns_zero(client, db):
     assert second_response.json()["started_tasks_count"] == 0
 
 
-def test_get_task_status(client, db):
-    create_task_dependencies(db)
-
-    task = Task(
-        id="task-test-1",
-        title="Тестовая задача",
-        description=None,
-        work_type_id="work-type-test",
-        employee_id="employee-test",
-        location_id="location-test",
-        device_id=None,
-        planned_date=None,
-        status="in_progress",
-        priority="medium",
-        closed_by_employee_id=None,
-        closed_at=None,
-        is_active=1,
-    )
-
-    db.add(task)
-    db.commit()
-
+def test_get_task_status(client, in_progress_task):
     response = client.get(
         "/api/tasks/task-test-1/status"
     )
@@ -156,28 +59,7 @@ def test_get_task_status(client, db):
     assert data["is_active"] == 1
 
 
-def test_close_task_success(client, db):
-    create_task_dependencies(db)
-
-    task = Task(
-        id="task-test-1",
-        title="Тестовая задача",
-        description=None,
-        work_type_id="work-type-test",
-        employee_id="employee-test",
-        location_id="location-test",
-        device_id=None,
-        planned_date=None,
-        status="in_progress",
-        priority="medium",
-        closed_by_employee_id=None,
-        closed_at=None,
-        is_active=1,
-    )
-
-    db.add(task)
-    db.commit()
-
+def test_close_task_success(client, in_progress_task):
     response = client.post(
         "/api/tasks/task-test-1/close",
         json={
@@ -195,28 +77,10 @@ def test_close_task_success(client, db):
     assert data["closed_at"] is not None
 
 
-def test_close_task_second_time_returns_400(client, db):
-    create_task_dependencies(db)
-
-    task = Task(
-        id="task-test-1",
-        title="Тестовая задача",
-        description=None,
-        work_type_id="work-type-test",
-        employee_id="employee-test",
-        location_id="location-test",
-        device_id=None,
-        planned_date=None,
-        status="in_progress",
-        priority="medium",
-        closed_by_employee_id=None,
-        closed_at=None,
-        is_active=1,
-    )
-
-    db.add(task)
-    db.commit()
-
+def test_close_task_second_time_returns_400(
+    client,
+    in_progress_task,
+):
     first_response = client.post(
         "/api/tasks/task-test-1/close",
         json={
@@ -240,28 +104,10 @@ def test_close_task_second_time_returns_400(client, db):
     }
 
 
-def test_close_task_unknown_employee_returns_404(client, db):
-    create_task_dependencies(db)
-
-    task = Task(
-        id="task-test-1",
-        title="Тестовая задача",
-        description=None,
-        work_type_id="work-type-test",
-        employee_id="employee-test",
-        location_id="location-test",
-        device_id=None,
-        planned_date=None,
-        status="in_progress",
-        priority="medium",
-        closed_by_employee_id=None,
-        closed_at=None,
-        is_active=1,
-    )
-
-    db.add(task)
-    db.commit()
-
+def test_close_task_unknown_employee_returns_404(
+    client,
+    in_progress_task,
+):
     response = client.post(
         "/api/tasks/task-test-1/close",
         json={
@@ -270,6 +116,7 @@ def test_close_task_unknown_employee_returns_404(client, db):
     )
 
     assert response.status_code == 404
+
     assert response.json() == {
         "detail": "Сотрудник не найден."
     }
@@ -281,6 +128,7 @@ def test_get_unknown_task_status_returns_404(client):
     )
 
     assert response.status_code == 404
+
     assert response.json() == {
         "detail": "Задача не найдена."
     }

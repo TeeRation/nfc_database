@@ -11,10 +11,10 @@ skinparam ranksep 55
 class NfcTag {
     id: uuid <<PK>>
     --
-    manufacturer_id: uuid 
+    manufacturer_id: uuid <<FK>>
     entity_type: varchar
     entity_id: uuid
-    is_active: BOOLEAN
+    is_active: boolean
 }
 
 class WorkType {
@@ -23,6 +23,7 @@ class WorkType {
     name: varchar
     code: varchar
     description: text
+    nfc_tag_id: uuid <<FK>>
     is_active: boolean
 }
 
@@ -32,6 +33,7 @@ class Employee {
     full_name: varchar
     personal_number: varchar
     position: varchar
+    nfc_tag_id: uuid <<FK>>
     is_active: boolean
 }
 
@@ -40,13 +42,13 @@ class Task {
     --
     title: varchar
     description: text
-    work_type_id: uuid<<FK>>
+    work_type_id: uuid <<FK>>
     employee_id: uuid <<FK>>
     location_id: uuid <<FK>>
     device_id: uuid <<FK>>
     closed_by_employee_id: uuid <<FK>>
     planned_date: date
-    status: varchar 
+    status: varchar
     priority: varchar
     closed_at: timestamp
     is_active: boolean
@@ -58,6 +60,7 @@ class Device {
     name: varchar
     inventory_number: varchar
     location_id: uuid <<FK>>
+    nfc_tag_id: uuid <<FK>>
     is_active: boolean
 }
 
@@ -66,6 +69,7 @@ class Location {
     --
     name: varchar
     description: text
+    nfc_tag_id: uuid <<FK>>
     is_active: boolean
 }
 
@@ -82,12 +86,15 @@ Task -right-> Employee
 Task ..right..> Employee
 Task -down-> Device
 Task -down-> Location
-NfcTag -left-> NfcManufacturer
-
-NfcTag ..> Device
-NfcTag ..> Location
 
 Device -right-> Location
+
+NfcTag -left-> NfcManufacturer
+
+NfcTag ..> WorkType
+NfcTag ..> Employee
+NfcTag ..> Device
+NfcTag ..> Location
 
 note right of NfcTag
   Полиморфная связь NFC-метки.
@@ -100,7 +107,8 @@ note right of NfcTag
   соответствующей записи в выбранной таблице.
 
   PK - Primary Key. Первичный ключ (id).
-  FK - Foreign Key. Вторичный ключ. Поле-ссылка на запись из другой таблицы.
+  FK - Foreign Key. Вторичный ключ.
+  Поле-ссылка на запись из другой таблицы.
 end note
 
 WorkType -[hidden]right-> Task
